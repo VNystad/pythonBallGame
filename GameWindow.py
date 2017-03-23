@@ -7,7 +7,7 @@ width = 600;
 height = 500;
 # Color (RED, GREEN, BLUE)
 background_color = (255,255,205)
-balls = 1
+numberOfBalls = 1
 ballList = []
 
 
@@ -74,7 +74,7 @@ def game():
     # Must be a double parenthesis
     window = pygame.display.set_mode((width, height))
 
-    for count in range(balls):
+    for count in range(numberOfBalls):
         size = random.randint(10, 20)
         x = random.randint(0, width)
         y = random.randint(0, height)
@@ -85,15 +85,18 @@ def game():
 
         ballList.append(ball)
 
+    player = Ball(width/ 2, height - 20, 20)
+    player.color = (0, 0, 0)
+
     # Title
     pygame.display.set_caption('myGame')
 
     running = True
 
     while running:
-        tick(window, running)
+        tick(window, running, player)
 
-def tick(window, running):
+def tick(window, running, player):
     global timeElapsed
     global tickStart
     global tickEnd
@@ -110,6 +113,8 @@ def tick(window, running):
             ball.move()
             ball.bounce()
             ball.display(window)
+
+        player.display(window)
 
         pygame.display.flip()
 
