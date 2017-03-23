@@ -38,7 +38,7 @@ class Ball:
         self.color = (0, 0, 255)
         self.thickness = 10
         self.angle = math.pi/2
-        self.speed = 0.01
+        self.speed = 0.1
 
     def display(self, window):
         pygame.draw.circle(window, self.color, (int(self.x), int(self.y)), self.size, self.thickness)
